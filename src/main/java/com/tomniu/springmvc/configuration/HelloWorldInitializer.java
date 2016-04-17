@@ -1,4 +1,4 @@
-package com.websystique.springmvc.configuration;
+package com.tomniu.springmvc.configuration;
 
 import javax.servlet.Filter;
 

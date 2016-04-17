@@ -1,4 +1,4 @@
-package com.websystique.springmvc.model;
+package com.tomniu.springmvc.model;
 
 public class User {
 

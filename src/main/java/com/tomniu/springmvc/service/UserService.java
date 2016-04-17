@@ -1,8 +1,8 @@
-package com.websystique.springmvc.service;
+package com.tomniu.springmvc.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.User;
+import com.tomniu.springmvc.model.User;
 
 
 

@@ -1,4 +1,4 @@
-package com.websystique.springmvc.controller;
+package com.tomniu.springmvc.controller;
  
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.websystique.springmvc.model.User;
-import com.websystique.springmvc.service.UserService;
+import com.tomniu.springmvc.model.User;
+import com.tomniu.springmvc.service.UserService;
  
 @RestController
 public class HelloWorldRestController {

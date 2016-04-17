@@ -1,4 +1,4 @@
-package com.websystique.springmvc.service;
+package com.tomniu.springmvc.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.model.User;
+import com.tomniu.springmvc.model.User;
 
 @Service("userService")
 @Transactional
