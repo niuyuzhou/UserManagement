@@ -63,12 +63,12 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>Spring4MVCAngularJSExample</warName>
+						<warName>UserManagement</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>Spring4MVCAngularJSExample</finalName>
+		<finalName>UserManagement</finalName>
 	</build>
 </project>

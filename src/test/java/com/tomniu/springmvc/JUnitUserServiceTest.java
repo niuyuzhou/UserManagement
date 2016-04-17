@@ -52,7 +52,7 @@ public class JUnitUserServiceTest {
 	
 	@Test
 	public void findByIdTest(){
-		assertEquals(userService.findById(1).getId(),2);
+		assertEquals(userService.findById(1).getId(),1);
 	}
 	
 	@Ignore	
