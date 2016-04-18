@@ -3,7 +3,7 @@ A solution integrating AngularJS with J2EE by RESTful
 ##How to access
 maven install-->create UserManagement.war<br>
 copy UserManagement.war to webapps and start tomcat<br>
-http://localhost:8080/Spring4MVCAngularJSExample/UserList
+http://localhost:8080/UserManagement/UserList
 
 ##Back End
   Spring modules involved<br>
