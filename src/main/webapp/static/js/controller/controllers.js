@@ -54,29 +54,7 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				console.error('Error while fetching Currencies');
 			});
 		};
-/*		
-		  $scope.fetchAllUsers = function(){
-		      UserService.fetchAllUsers()
-		          .then(
-						       function(d) {
-							        $scope.users = d;
-							        
-									for(var i = 0; i < $scope.users.length; i++){
-										if($scope.users[i].id == $scope.user.id) {
-											$scope.user = angular.copy($scope.users[i]);
-											break;
-										}
-									}
-									if (i===$scope.users.length){
-										$scope.user.id = null;
-									}
-						       },
-		    					function(errResponse){
-		    						console.error('Error while fetching Currencies');
-		    					}
-				       );
-		  };
-*/
+
 		new_user = new UserService;
 		new_user.username = user.username;
 		new_user.address = user.address;
@@ -86,17 +64,7 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 		},function(){
 			console.error('Error while creating User.');
 		});
-/*
-		$scope.createUser = function(user){
-			UserService.createUser(user)
-			.then(
-				$scope.fetchAllUsers, 
-				function(errResponse){
-					console.error('Error while creating User.');
-				}	
-			);
-		};
-*/
+
 		$scope.updateUser = function(user, id){
 			UserService.update(user, function(){
 				console.log('Success while updating User.');
@@ -104,29 +72,7 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				console.error('Error while updating User.');
 			});
 		};
-/*
-		$scope.updateUser = function(user, id){
-			UserService.updateUser(user, id)
-			.then(
-				$scope.fetchAllUsers, 
-				function(errResponse){
-					console.error('Error while updating User.');
-				}	
-			);
-		};
-*/
-		
-/*
-		$scope.deleteUser = function(id){
-			UserService.deleteUser(id)
-			.then(
-				$scope.fetchAllUsers, 
-				function(errResponse){
-					console.error('Error while deleting User.');
-				}	
-			);
-		};
-*/
+
 		$scope.submit = function() {
 			if($scope.user.id==null){
 				console.log('Saving New User', $scope.user);    
