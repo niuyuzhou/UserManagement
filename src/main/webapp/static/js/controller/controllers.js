@@ -3,39 +3,37 @@
 var userControllers = angular.module('userControllers', []);
 
 userControllers.controller('UserList', ['$scope', 'UserService', function($scope, UserService) {
-  $scope.user={id:null,username:'',address:'',email:''};
-  $scope.users=[];
-  $scope.orderProp="id";
+	var user={};
+	var users=[];
+	$scope.user={id:null,username:'',address:'',email:''};
+	$scope.users=[];
+	$scope.orderProp="id";
       
-  $scope.fetchAllUsers = function(){
-      UserService.fetchAllUsers()
-          .then(
-				       function(d) {
-					        $scope.users = d;
-				       },
-    					function(errResponse){
-    						console.error('Error while fetching Currencies');
-    					}
-		       );
-  };
+	$scope.fetchAllUsers = function(){
+		users = UserService.query(function(){
+			$scope.users = users;
+		}, function(errResponse){
+			console.error('Error while fetching Currencies');
+		});
+	};
 
- $scope.deleteUser = function(id){
-      UserService.deleteUser(id)
-              .then(
-		              $scope.fetchAllUsers, 
-		              function(errResponse){
-			               console.error('Error while deleting User.');
-		              }	
-          );
-  };
+	$scope.deleteUser = function(id){
+		$scope.users.forEach(function(elem){
+			if (elem.id===id) {
+				user = elem;
+			}
+		});
+		user.$delete(function(){
+			console.log('delete success');
+		},function(errResponse){
+			console.error('Error while deleting User.');
+		});
+	};
 
 
       
   $scope.remove = function(id){
       console.log('id to be deleted', id);
-      if($scope.user.id === id) {//clean form if the user to be deleted is shown there.
-         $scope.reset();
-      }
       $scope.deleteUser(id);
   };
   
@@ -44,9 +42,19 @@ userControllers.controller('UserList', ['$scope', 'UserService', function($scope
 
 userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService',  
 	function($scope, $routeParams, UserService) {
+		var new_user;
+		var user_;
 		$scope.user={id:$routeParams.userId,username:'',address:'',email:''};
 		$scope.users=[];
 
+		$scope.fetchAllUsers = function(){
+			users = UserService.query(function(){
+				$scope.users = users;
+			}, function(errResponse){
+				console.error('Error while fetching Currencies');
+			});
+		};
+/*		
 		  $scope.fetchAllUsers = function(){
 		      UserService.fetchAllUsers()
 		          .then(
@@ -68,7 +76,17 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 		    					}
 				       );
 		  };
-		
+*/
+		new_user = new UserService;
+		new_user.username = user.username;
+		new_user.address = user.address;
+		new_user.email = user.email;
+		new_user.$save(function(){
+			console.log('Success creating User.');
+		},function(){
+			console.error('Error while creating User.');
+		});
+/*
 		$scope.createUser = function(user){
 			UserService.createUser(user)
 			.then(
@@ -78,7 +96,15 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				}	
 			);
 		};
-
+*/
+		$scope.updateUser = function(user, id){
+			UserService.update(user, function(){
+				console.log('Success while updating User.');
+			},function(){
+				console.error('Error while updating User.');
+			});
+		};
+/*
 		$scope.updateUser = function(user, id){
 			UserService.updateUser(user, id)
 			.then(
@@ -88,7 +114,9 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				}	
 			);
 		};
-
+*/
+		
+/*
 		$scope.deleteUser = function(id){
 			UserService.deleteUser(id)
 			.then(
@@ -98,7 +126,7 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				}	
 			);
 		};
-
+*/
 		$scope.submit = function() {
 			if($scope.user.id==null){
 				console.log('Saving New User', $scope.user);    
@@ -107,7 +135,6 @@ userControllers.controller('UserDetail', ['$scope', '$routeParams', 'UserService
 				$scope.updateUser($scope.user, $scope.user.id);
 				console.log('User updated with id ', $scope.user.id);
 			}
-			$scope.reset();
 		};
       
 		$scope.edit = function(id){
